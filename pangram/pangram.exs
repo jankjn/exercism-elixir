@@ -14,5 +14,11 @@ defmodule Pangram do
 
   @spec pangram?(String.t) :: boolean
   def pangram?(sentence) do
+    26 == sentence
+    |> String.downcase
+    |> String.replace(~r/[^a-z]/, "")
+    |> String.codepoints
+    |> Enum.uniq
+    |> Enum.count
   end
 end
